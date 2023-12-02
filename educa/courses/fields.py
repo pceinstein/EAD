@@ -12,8 +12,8 @@ class OrderField(models.PositiveIntegerField):
             try:
                 qs = self.model.objects.all()
                 if self.for_fields:
-                    # filtra com vase nos objetos que tenham os mesmos
-                    #valores nos campos que estão em "for_fields"
+                    # filtra com base nos objetos que tenham os mesmos
+                    # valores nos campos que estão em "for_fields"
                     query = {field: getattr(model_instance, field)\
                              for field in self.for_fields}
                     qs = qs.filter(**query)

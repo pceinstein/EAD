@@ -87,7 +87,7 @@
                 url: '{% url "module_order" %}',
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
-                data: JSON.stringfy(modules_order)
+                data: JSON.stringify(modules_order)
             });
         }
     });
@@ -104,7 +104,7 @@
                 url: '{% url "content_order" %}',
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
-                data: JSON.stringfy(contents_order)
+                data: JSON.stringify(contents_order)
             });
         }
     });    
