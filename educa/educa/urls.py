@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 from courses.views import CourseListView
+
+LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 
 urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
@@ -26,3 +30,7 @@ urlpatterns = [
     path('', CourseListView.as_view(), name='course_list'),
     path('students/', include('students.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
