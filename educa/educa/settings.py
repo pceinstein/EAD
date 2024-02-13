@@ -168,3 +168,13 @@ REST_FRAMEWORK = {
 
 # aplicação ASGI principal
 ASGI_APPLICATION = 'educa.routing.application'
+
+# configurando uma camada de canais com o redis
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],  # Configuração padrão do Redis
+        },
+    },
+}
